@@ -1,36 +1,36 @@
 import React from "react";
-import {render, fireEvent, waitFor} from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import BubblePage from "./BubblePage";
-import mockfetchColors from "./fetchColors"
+import mockfetchColors from "./fetchColors";
 
 jest.mock("./fetchColors");
 
 test("Fetches data and renders the bubbles", async () => {
   // Arrange
-  mockfetchColors.mockResolvedValueOnce(colors)
+  mockfetchColors.mockResolvedValueOnce(response);
 
   // Act
 
-  const {findByText, getByRole, getAllByTestId} = render(<BubblePage/>);
+  const { findByText, getByRole, getAllByTestId } = render(<BubblePage />);
 
   // Assert
 
   //assert
-//   await waitFor(() => {
-//     expect(findByText(/colors/i)).toBeTruthy()
-// })
-
+  await waitFor(() => {
+    expect(findByText(/colors/i)).toBeTruthy();
+  });
 
   // Finish this test
 });
 
-let colors = [
-  {
-    color: "aliceblue",
-    code: {
-      hex: "#f0f8ff"
+let response = {
+  data: [
+    {
+      color: "aliceblue",
+      code: {
+        hex: "#f0f8ff",
+      },
+      id: 1,
     },
-    id: 1
-  },
-  
-];
+  ],
+};
